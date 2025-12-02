@@ -14,7 +14,7 @@ export default function Home() {
   const handleCardClick = (card: string) => {
     setCardStates((prev) => ({
       ...prev,
-      [card]: (prev[card] + 1) % 4, // Cycles through 0 (white), 1 (green), 2 (orange), 3 (red)
+      [card]: (prev[card] + 1) % 5, // Cycles through 0 (white), 1 (green), 2 (orange), 3 (red), 4 (hidden)
     }))
   }
 

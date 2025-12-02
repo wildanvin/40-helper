@@ -26,7 +26,7 @@ export default function CardButton({ card, state, onClick }: CardButtonProps) {
     return imageMap[card]
   }
 
-  // Determine background color based on state: 0=white, 1=green, 2=orange, 3=red
+  // Determine background color based on state: 0=white, 1=green, 2=orange, 3=red, 4=hidden
   const getBgColor = (state: number) => {
     switch (state) {
       case 0:
@@ -34,9 +34,9 @@ export default function CardButton({ card, state, onClick }: CardButtonProps) {
       case 1:
         return "bg-green-500"
       case 2:
-        return "bg-orange-500"
+        return "bg-yellow-400" // Vibrant orange
       case 3:
-        return "bg-red-500"
+        return "bg-red-700" // Deep red
       default:
         return "bg-white"
     }
@@ -54,8 +54,10 @@ export default function CardButton({ card, state, onClick }: CardButtonProps) {
         "hover:opacity-80 active:scale-95",
         "relative overflow-hidden",
         getBgColor(state),
+        state === 4 && "invisible",
       )}
       aria-label={`Card ${card}, click to cycle through states`}
+      disabled={state === 4}
     >
       <Image
         src={imagePath || "/placeholder.svg"}
